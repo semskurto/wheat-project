@@ -1,53 +1,81 @@
-#  Wheat Detection and Other Extraction of Qualified Data 🌾
-*** 
-  
+# Wheat Detection and Other Extraction of Qualified Data 🌾
+
 ![Workflow](https://user-images.githubusercontent.com/31928447/117530943-9c085f80-afe8-11eb-846c-af664f6b72ec.png)
-##### ABSTRACT  
-  In this study, it is aimed to extract spike density, maturity and basic health information from 
-optical images in order to provide a healthy development process by monitoring wheat ears. Fort 
-his purpose it is aimed to obtain basic health data from wheat optic images by using image 
-processing and machine learning methods. These data will be beneficial in creating solutions for 
-the losses in the production process of the wheat producer and obtaining quality products. 
-  
-##### ÖZET  
-  Bu çalışmamızda buğday başaklarının takibini yapılarak sağlıklı gelişim süreci sağlanması için 
-optik görüntülerden başak yoğunluğu, olgunluk ve temel sağlık bilgilerinin çıkarımı 
-hedeflenmektedir. Bu amaçla görüntü işleme ve makine öğrenimi metotları kullanılarak buğday 
-fotoğraflarından temel sağlık verileri elde edilmesi amaçlanmaktadır. Bu veriler buğday 
-üreticisinin üretim sürecindeki kayıplara ilişkin çözümlerin oluşturulması ve kaliteli ürün elde 
-edilmesi açısından fayda sağlayacaktır.  
+*The image above depicts the general workflow of the project, from data acquisition to analysis.*
 
-  
-#### 1. INTRODUCTION:
+## Overview
+This project focuses on the detection of wheat spikes from optical images using machine learning and image processing techniques. The primary goal is to extract valuable information such as spike density, maturity, and overall health of wheat crops. This data can aid farmers in monitoring their fields, making informed decisions to mitigate losses, and ultimately improving wheat yield and quality.
 
-Wheat is the most widely cultivated and commercially significant crop in many countries worldwide. It serves as a crucial staple in human nutrition. The cultivation areas and production of wheat have been increasing in parallel with population growth. The global population, which surpassed 1 billion in 1802, reached approximately 2 billion in 1927, and is projected to exceed 7 billion in 2011, 8.5 billion in 2020, 9.6 billion in 2030, and 12 billion in 2050.
+## Problem Statement
+Wheat is a critical global food source, and its demand is continuously rising with the growing world population. However, maximizing wheat yield is challenging. Traditional methods of monitoring large wheat fields are often labor-intensive and may not provide timely insights into crop health. Delays in identifying issues like diseases, nutrient deficiencies, or maturity variations can lead to significant production losses. This project aims to address these challenges by providing an automated way to analyze wheat crops.
 
-In line with population growth, global wheat production has also increased. While the world wheat production, which has been on the rise alongside population increase, was around 222 million tons in the 1960s, it reached 586 million tons in the 2000s and 650 million tons in 2010. It is estimated that per capita wheat consumption worldwide was approximately 70 kg in the 1960s and has now reached around 100 kg per person. Although the world average wheat yield has increased to 300 kg/ha in recent years, considering that the world record for wheat yield was 1,564 kg/ha in 2010, it implies that we are currently able to produce only around 1/5 of the potential achievable on existing cultivation areas. Therefore, increasing wheat production by enhancing yield per unit area without expanding the existing planting areas is of critical importance.
+## Solution
+The core of this project is a system built to analyze optical images of wheat fields. The methodology involves:
+*   **Machine Learning:** An object detection model, specifically EfficientDet-D4, is trained to identify and locate wheat spikes within images.
+*   **Image Processing:** Various techniques are employed to enhance image quality and prepare data for the model and subsequent analysis.
+*   **Data Extraction:** The system aims to extract key metrics such as spike density, estimate maturity levels, and derive basic health indicators from the processed images and detected spikes.
 
-Against this backdrop, monitoring wheat spikes in the wheat production process becomes crucial for ensuring healthy development. This study aims to obtain health data from wheat photographs by utilizing image processing and machine learning methods. These data will provide the wheat producer with insights to generate solutions for production losses and achieve high-quality products. Particularly in large-scale fields, it becomes physically challenging for producers to observe and analyze the crop, and delays in the decision-making stage can result in various losses. Hence, informing the producers during the decision stage can yield substantial benefits, largely facilitated by the contribution of machine learning models.
-  
-  
-#### 2. PURPOSE and OBJECTIVES of the STUDY 
-  
-  Currently, the research on the methods to be used in the project stages is ongoing. Our study is based on a machine learning model that aims to detect only wheat spikes from optical images. In the subsequent stages, various data can be obtained using the frames of these wheat spikes. Therefore, the development phase of the machine learning model for object detection will be the fundamental part on which the entire result is based, and the stability of the model will have an impact on the overall outcome. Furthermore, it is planned to obtain useful fundamental insights through analytical approaches by extracting meta-data from images using our object detection machine learning model.
+## Features
+The project incorporates several key steps and techniques:
 
-#### 3. CONCLUSION and RECOMMENDATIONS
+*   **Image Augmentation:** To improve model robustness and performance, various image augmentation techniques are applied to the training dataset, including:
+    *   Crop
+    *   Rotate
+    *   Flip
+    *   Mixup
+    *   Mosaic
+    *   Hue adjustments
+    *   Gaussian Noise
+*   **Machine Learning Model:**
+    *   Algorithm: EfficientDet-D4 is utilized for its efficiency and accuracy in object detection tasks, specifically for detecting wheat spikes.
+*   **Model Training Methodology:**
+    *   The EfficientDet-D4 model was trained using various normalization techniques, with sequential normalization being selected for the final model.
+*   **Image Processing:**
+    *   The Chale histogram method is applied to optimize image contrast and quality, enhancing the visibility of features relevant for analysis.
+*   **Analytical Approach:**
+    *   By leveraging the outputs of the object detection model, various analytical approaches are suggested to extract basic information and insights from the images.
 
-In the current state, the machine learning model we have obtained exhibits mean Average Precision (mAP) values generally greater than 0.5, indicating a successful model. Furthermore, to enhance the stability of the model, it is planned to apply additional image processing techniques to achieve better results from the optical images. The model we have created holds critical importance as it contributes to the overall improvement of the study's results, and further training iterations can be conducted to enhance the outcomes. Based on the obtained outputs, utilizing analytical approaches, the essential health information of wheat plants can provide benefits to users.
-  
----  
+## Dataset
+The project utilizes optical images of wheat fields as its primary dataset. These images are processed and used to train the machine learning model for wheat spike detection. *(Further details about the dataset, such as source, resolution, and size, can be found in the referenced Kaggle notebooks.)*
 
-### Additional Informations:  
-##### Basic Working Steps:  
+## Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/username/repository-name.git # Replace with the actual repository URL
+    cd repository-name
+    ```
+2.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *Note: The `requirements.txt` file lists necessary Python packages. Ensure you have Python and pip installed.*
 
-- [x] Image Augmentation --->  *Crop, Rotate, Flip, Mixup, Mosaic, Hue ve Gaussian Noise*
-- [x] Selection Machine Learning Model Algoritm ---> *EfficientDet-D4* Next time add new ML algoritm
-- [x] Model Training Methodolgy ---> *Various normalization techniques were compared and finally EfficientDet-D4 was trained with sequential normalization.*
-- [x] Image Processing ---> *The image was optimized by applying the Chale histogram method.*
-- [x] Analytical Approach ---> *Basic information was extracted from images by suggesting various approaches.*
-  
-***
-#### ADDITIONAL LINKS OF THE STUDY
-1. [Jupyter Notebook Workspace for Train(+includes model weights)](https://www.kaggle.com/shemskurtoglu/wheat-tpu-tfkeras-00?scriptVersionId=52800232).  
-2. [Jupyter Notebook Workspace for Final Report](https://www.kaggle.com/shemskurtoglu/wheat-summary-report).  
+## Usage
+The primary workflows, including model training, data analysis, and reporting, are conducted within Jupyter Notebooks. Please refer to the following Kaggle notebooks for detailed implementation:
 
+*   **Training & Model Implementation**: [Jupyter Notebook Workspace for Train](https://www.kaggle.com/shemskurtoglu/wheat-tpu-tfkeras-00?scriptVersionId=52800232) (this notebook also includes model weights)
+*   **Summary Report**: [Jupyter Notebook Workspace for Final Report](https://www.kaggle.com/shemskurtoglu/wheat-summary-report)
+
+## Results
+The machine learning model developed in this study demonstrates promising performance, achieving mean Average Precision (mAP) values generally greater than 0.5 for wheat spike detection. This indicates a successful foundational model. To further enhance the stability and accuracy of the model, future work includes applying additional image processing techniques and conducting more training iterations. The insights derived from the model's outputs, using analytical approaches, can provide valuable health information about wheat plants to users and producers.
+
+## Contributing
+We welcome contributions to enhance this project! Please follow these steps:
+1.  Fork the repository.
+2.  Create a new branch (`git checkout -b feature/your-feature-name`).
+3.  Make your changes and improvements.
+4.  Commit your changes (`git commit -m 'Add some feature'`).
+5.  Push to the branch (`git push origin feature/your-feature-name`).
+6.  Open a Pull Request for review.
+
+## License
+This project is licensed under the terms of the [LICENSE](./LICENSE) file.
+
+## Acknowledgements & Links
+*   This project is based on the original research and notebooks developed by [Shems Kurtoglu on Kaggle](https.www.kaggle.com/shemskurtoglu).
+*   **Kaggle Notebooks:**
+    *   [Wheat TPU TF Keras (Training Notebook)](https://www.kaggle.com/shemskurtoglu/wheat-tpu-tfkeras-00?scriptVersionId=52800232)
+    *   [Wheat Summary Report (Final Report Notebook)](https://www.kaggle.com/shemskurtoglu/wheat-summary-report)
+
+## Turkish Abstract (ÖZET)
+Bu çalışmamızda buğday başaklarının takibini yapılarak sağlıklı gelişim süreci sağlanması için optik görüntülerden başak yoğunluğu, olgunluk ve temel sağlık bilgilerinin çıkarımı hedeflenmektedir. Bu amaçla görüntü işleme ve makine öğrenimi metotları kullanılarak buğday fotoğraflarından temel sağlık verileri elde edilmesi amaçlanmaktadır. Bu veriler buğday üreticisinin üretim sürecindeki kayıplara ilişkin çözümlerin oluşturulması ve kaliteli ürün elde edilmesi açısından fayda sağlayacaktır.
